@@ -1,0 +1,17 @@
+.aside-text {
+  padding: 2rem;
+  border: 1px solid white;
+  border-radius: 1rem;
+  background-color: blueviolet;
+  margin: 50px;
+  width: 80%;
+  box-shadow: 0 0 10px black;
+}
+
+.aside-text p {
+  font-size: 1rem;
+}
+
+h3 {
+  text-align: center;
+}

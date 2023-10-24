@@ -1,0 +1,128 @@
+:root {
+  color: white;
+  background-color: rgb(162, 92, 228);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  margin: 20px;
+  width: 100%;
+  border-radius: 15px;
+  border: solid 1px black;
+  box-shadow: 0 0 10px black;
+}
+
+h2 {
+  margin: 20px;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px black;
+  text-align: center;
+}
+
+#postsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.flex {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+}
+
+.post {
+  width: 345px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-author {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+
+.post-like-button.liked {
+  color: red;
+}
+
+.post-delete-button,
+.post-follow-button.unfollow {
+  background-color: red !important;
+}
+
+form {
+  width: 80%;
+}
+
+#add-button {
+  position: fixed;
+  z-index: 50;
+  right: 20px;
+  bottom: 20px;
+  background-color: blue;
+  color: white;
+  width: 70px;
+  height: 70px;
+  font-weight: bold;
+}
+
+#user-icon {
+  font-size: 50px;
+  margin: 20px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center {
+    width: 80%;
+  }
+}
