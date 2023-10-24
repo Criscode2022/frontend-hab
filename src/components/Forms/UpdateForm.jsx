@@ -41,7 +41,7 @@ function UpdateForm() {
         return acc;
       }, {});
 
-      const url = "http://localhost:3000/users/update";
+      const url = "http://https://backend-hab.onrender.com/users/update";
       const requestOptions = {
         method: "PUT",
         headers: {

@@ -9,7 +9,7 @@ const ListofPosts = () => {
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch('http://localhost:3000/posts', {
+    fetch('http://https://backend-hab.onrender.com/posts', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
