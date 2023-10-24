@@ -1,7 +1,7 @@
 // Función que registra a un usuario.
 export const registerService = async (username, password) => {
   const response = await fetch(
-    `http://https://backend-hab.onrender.com/users/register`,
+    `https://backend-hab.onrender.com/users/register`,
     {
       method: "POST",
       headers: {
@@ -26,19 +26,16 @@ export const registerService = async (username, password) => {
 
 // Función que loguea a un usuario.
 export const loginService = async (username, password) => {
-  const response = await fetch(
-    `http://https://backend-hab.onrender.com/users/login`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    }
-  );
+  const response = await fetch(`https://backend-hab.onrender.com/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  });
 
   const json = await response.json();
 
@@ -54,7 +51,7 @@ export const loginService = async (username, password) => {
 // Función que obtiene los datos de un usuario.
 export const getUserService = async (token) => {
   const response = await fetch(
-    `http://https://backend-hab.onrender.com/users/getUser`,
+    `https://backend-hab.onrender.com/users/getUser`,
     {
       method: "GET",
       headers: {
@@ -78,7 +75,7 @@ export const getUserService = async (token) => {
 // Función que actualiza los datos de un usuario.
 export const updateUserService = async (token, fieldsToUpdate) => {
   const response = await fetch(
-    `http://https://backend-hab.onrender.com/users/update`,
+    `https://backend-hab.onrender.com/users/update`,
     {
       method: "PUT",
       headers: {
