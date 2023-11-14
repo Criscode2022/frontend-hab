@@ -45,7 +45,7 @@ const Post = (props) => {
     try {
 
       // Verificar si el usuario sigue al autor del post cuando el componente se monta
-      fetch(`http://https://backend-hab.onrender.com/users/checkfollow/${userId}`, {
+      fetch(`http://localhost:3000/users/checkfollow/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -66,7 +66,7 @@ const Post = (props) => {
         });
 
       // Check if the user liked the post when the component mounts
-      fetch(`http://https://backend-hab.onrender.com/posts/likes`, {
+      fetch(`http://localhost:3000/posts/likes`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -97,8 +97,8 @@ const Post = (props) => {
   const toggleLike = () => {
     // Realizar una solicitud a la API para dar o quitar like en función de userLiked
     const endpoint = userLiked
-      ? `http://https://backend-hab.onrender.com/posts/unlike/${postId}`
-      : `http://https://backend-hab.onrender.com/posts/like/${postId}`;
+      ? `http://localhost:3000/posts/unlike/${postId}`
+      : `http://localhost:3000/posts/like/${postId}`;
 
     const method = userLiked ? 'DELETE' : 'POST';
 
@@ -141,8 +141,8 @@ const Post = (props) => {
 
     // Definir el endpoint para seguir o dejar de seguir al autor del post
     const followEndpoint = isFollowing
-      ? `http://https://backend-hab.onrender.com/users/unfollow/${userId}`
-      : `http://https://backend-hab.onrender.com/users/follow/${userId}`;
+      ? `http://localhost:3000/users/unfollow/${userId}`
+      : `http://localhost:3000/users/follow/${userId}`;
 
     const method = isFollowing ? 'DELETE' : 'POST';
 
@@ -168,7 +168,7 @@ const Post = (props) => {
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       // Make a DELETE request to your API endpoint here
-      fetch(`http://https://backend-hab.onrender.com/posts/delete/${postId}`, {
+      fetch(`http://localhost:3000/posts/delete/${postId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

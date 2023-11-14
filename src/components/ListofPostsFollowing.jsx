@@ -9,7 +9,7 @@ const ListofPostsFollowing = () => {
 
   useEffect(() => {
     // Fetch the list of users you are following
-    fetch('http://https://backend-hab.onrender.com/users/following', {
+    fetch('http://localhost:3000/users/following', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -23,7 +23,7 @@ const ListofPostsFollowing = () => {
         console.log('Users Followed:', usersFollowed);
 
         // Fetch the list of posts
-        fetch('http://https://backend-hab.onrender.com/posts', {
+        fetch('http://localhost:3000/posts', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
