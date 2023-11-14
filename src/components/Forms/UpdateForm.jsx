@@ -42,7 +42,7 @@ function UpdateForm() {
       const shouldDelete = window.confirm("¿Seguro que quieres eliminar tu perfil y toda su actividad asocidada? Esta acción no puede ser revertida.");
 
       if (shouldDelete) {
-        const url = "http://localhost:3000/users/delete";
+        const url = "http://https://backend-hab.onrender.com/users/delete";
         const requestOptions = {
           method: "DELETE",
           headers: {
@@ -81,7 +81,7 @@ function UpdateForm() {
         return acc;
       }, {});
 
-      const url = "http://localhost:3000/users/update";
+      const url = "http://https://backend-hab.onrender.com/users/update";
       const requestOptions = {
         method: "PUT",
         headers: {
