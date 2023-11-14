@@ -31,7 +31,7 @@ function NewPostForm() {
       console.log("Datos del formulario a enviar:", postData); // Verificar los datos del formulario que estás enviando
       console.log("Token de autenticación:", token); // Verificar el token
 
-      const response = await fetch(`http://localhost:3000/posts/newPost`, {
+      const response = await fetch(`https://backend-hab.onrender.com/posts/newPost`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
