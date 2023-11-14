@@ -1,18 +1,15 @@
 // Función que registra a un usuario.
 export const registerService = async (username, password) => {
-  const response = await fetch(
-    `https://backend-hab.onrender.com/users/register`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    }
-  );
+  const response = await fetch(`http://localhost:3000/users/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  });
 
   const json = await response.json();
 
@@ -26,7 +23,7 @@ export const registerService = async (username, password) => {
 
 // Función que loguea a un usuario.
 export const loginService = async (username, password) => {
-  const response = await fetch(`https://backend-hab.onrender.com/users/login`, {
+  const response = await fetch(`http://localhost:3000/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,16 +47,13 @@ export const loginService = async (username, password) => {
 
 // Función que obtiene los datos de un usuario.
 export const getUserService = async (token) => {
-  const response = await fetch(
-    `https://backend-hab.onrender.com/users/getUser`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await fetch(`http://localhost:3000/users/getUser`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   const json = await response.json();
 
@@ -74,17 +68,14 @@ export const getUserService = async (token) => {
 
 // Función que actualiza los datos de un usuario.
 export const updateUserService = async (token, fieldsToUpdate) => {
-  const response = await fetch(
-    `https://backend-hab.onrender.com/users/update`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(fieldsToUpdate),
-    }
-  );
+  const response = await fetch(`http://localhost:3000/users/update`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(fieldsToUpdate),
+  });
 
   const json = await response.json();
   if (!response.ok) {

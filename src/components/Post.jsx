@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,12 +12,13 @@ import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { CardActions } from '@mui/material';
+import { CardActions, Tooltip } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 
 const Post = (props) => {
   const {
     imageUrl,
+    biography,
     title,
     onDelete,
     userName,
@@ -26,7 +28,8 @@ const Post = (props) => {
     userId,
     likes,
     updateBadgeCount, // Callback function from the parent component
-    isLoggedUserPost
+    isLoggedUserPost,
+    avatar
   } = props;
 
   const [userLiked, setUserLiked] = useState(false); // Estado para saber si el usuario dio like al post
@@ -42,7 +45,7 @@ const Post = (props) => {
     try {
 
       // Verificar si el usuario sigue al autor del post cuando el componente se monta
-      fetch(`https://backend-hab.onrender.com/users/checkfollow/${userId}`, {
+      fetch(`http://localhost:3000/users/checkfollow/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -63,7 +66,7 @@ const Post = (props) => {
         });
 
       // Check if the user liked the post when the component mounts
-      fetch(`https://backend-hab.onrender.com/posts/likes`, {
+      fetch(`http://localhost:3000/posts/likes`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -94,8 +97,8 @@ const Post = (props) => {
   const toggleLike = () => {
     // Realizar una solicitud a la API para dar o quitar like en función de userLiked
     const endpoint = userLiked
-      ? `https://backend-hab.onrender.com/posts/unlike/${postId}`
-      : `https://backend-hab.onrender.com/posts/like/${postId}`;
+      ? `http://localhost:3000/posts/unlike/${postId}`
+      : `http://localhost:3000/posts/like/${postId}`;
 
     const method = userLiked ? 'DELETE' : 'POST';
 
@@ -138,8 +141,8 @@ const Post = (props) => {
 
     // Definir el endpoint para seguir o dejar de seguir al autor del post
     const followEndpoint = isFollowing
-      ? `https://backend-hab.onrender.com/users/unfollow/${userId}`
-      : `https://backend-hab.onrender.com/users/follow/${userId}`;
+      ? `http://localhost:3000/users/unfollow/${userId}`
+      : `http://localhost:3000/users/follow/${userId}`;
 
     const method = isFollowing ? 'DELETE' : 'POST';
 
@@ -165,7 +168,7 @@ const Post = (props) => {
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       // Make a DELETE request to your API endpoint here
-      fetch(`https://backend-hab.onrender.com/posts/delete/${postId}`, {
+      fetch(`http://localhost:3000/posts/delete/${postId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -196,7 +199,9 @@ const Post = (props) => {
   return (
     <Card className="post animate__animated animate__zoomIn">
       <CardHeader
+        avatar={<Avatar alt="User Avatar" src={avatar} />} // Reemplaza `avatarSrc` con la URL de la imagen del avatar
         title={userName}
+        subheader={biography}
         action={
           <Button
             variant="contained"
@@ -205,7 +210,9 @@ const Post = (props) => {
           >
             {isFollowing ? 'Dejar de seguir' : 'Seguir'}
           </Button>
+
         }
+
       />
       <CardMedia component="img" height="140" image={imageUrl} alt="Post Image" />
       <CardContent className="post-content">

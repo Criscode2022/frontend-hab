@@ -9,7 +9,7 @@ const ListofPosts = () => {
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch('https://backend-hab.onrender.com/posts', {
+    fetch('http://localhost:3000/posts', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -60,8 +60,10 @@ const ListofPosts = () => {
             onDelete={handleDeletePost}
             userName={post.name_user}
             likes={post.like_count}
+            biography={post.biography_user}
             updateBadgeCount={updateBadgeCount}
             isLoggedUserPost={true} // Solo mostrará los posts del usuario logueado
+            avatar={post.avatar_user}
           />
         ))}
       </div>
