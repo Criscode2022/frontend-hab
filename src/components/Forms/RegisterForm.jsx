@@ -59,8 +59,8 @@ const RegisterForm = () => {
       </form>
       {loading && (
         <div>
-          <CircularProgress />
           <p style={{ margin: '20px', fontWeight: 'bold' }}>
+            <CircularProgress />
             Nota: la carga inicial puede tardar unos segundos mientras se enciende el servidor
           </p>
         </div>
